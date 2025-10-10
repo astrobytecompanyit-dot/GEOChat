@@ -14,7 +14,7 @@ app.use(session({
    cookie:{secure:false}
 }));
 
-let latestLocation = { latitude: null, longitude: null, timestamp: null };
+
 
 
 app.get("/", (req, res) => {
@@ -117,17 +117,154 @@ app.post("/enter-user-chat",(req,res)=>{
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <title>HeyChat</title>
+    <title>GEOChat</title>
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+ <style>
+  body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #0b0c10, #1f2833);
+    color: #c5c6c7;
+  }
+
+  #container_Chatting {
+    max-width: 800px;
+    margin: 0 auto;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #1f2833;
+  }
+
+  #Headline {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+  }
+
+  #Headline h2 {
+    font-size: 2rem;
+    margin: 0 5px;
+    background: linear-gradient(90deg, #00bfff, #1f8fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  #userico2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #0b0c10;
+    border-radius: 0;
+    box-shadow: inset 0 0 5px rgba(0, 191, 255, 0.3);
+  }
+
+  #userenv {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    overflow-y: auto;
+    gap: 10px;
+    background-color: #0b0c10;
+  }
+
+  #userchatdiv,
+  #mychatdiv {
+    padding: 12px 16px;
+    max-width: 70%;
+    word-wrap: break-word;
+    border-radius: 15px;
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  #userchatdiv {
+    background-color: #1b1c20;
+    color: #66fcf1;
+    align-self: flex-start;
+  }
+
+  #mychatdiv {
+    background-color: #45a29e;
+    color: #0b0c10;
+    align-self: flex-end;
+  }
+
+  #inputmess {
+    display: flex;
+    padding: 10px;
+    background-color: #0b0c10;
+    gap: 10px;
+  }
+
+  #inputmess input {
+    flex: 1;
+    padding: 12px 15px;
+    border-radius: 20px;
+    border: none;
+    font-size: 1rem;
+    background-color: #1f2833;
+    color: #c5c6c7;
+    box-shadow: inset 0 0 5px rgba(0, 191, 255, 0.3);
+  }
+#dchat{
+ background-color: #284364ff;
+ color:white;
+ border-radius: 20px;
+}
+ #back{
+ background-color: #284364ff;
+ color:white;
+ border-radius: 20px;
+}
+ #duser{
+ background-color: #284364ff;
+ color:white;
+ border-radius: 20px;
+}
+  #inputmess input:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 191, 255, 0.7);
+  }
+
+  #inputmess button {
+    padding: 12px 18px;
+    border-radius: 20px;
+    border: none;
+    background: linear-gradient(90deg, #00bfff, #1f8fff);
+    color: #0b0c10;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  #inputmess button:hover {
+    background: linear-gradient(90deg, #1f8fff, #00bfff);
+    box-shadow: 0 0 15px rgba(0, 191, 255, 0.5);
+  }
+
+  @media (max-width: 480px) {
+    #Headline h2 {
+      font-size: 1.5rem;
+    }
+
+    #userchatdiv,
+    #mychatdiv {
+      max-width: 85%;
+      font-size: 0.95rem;
+    }
+  }
+</style>
 
    
 </head>
 
 <body>
     <div id="container_Chatting">
-      <div id="Headline"><h2 id="hey">Hey </h2><h2 id="chat">Chat!🙋‍♂️</h2></div>
+      <div id="Headline"><h2 id="GEOChat">GEO </h2><h2 id="chat">Chat!🙋‍♂️</h2></div>
        <div id="userico2">
         <div id="uc1">
         <span id="userchat2"><i class="fa fa-user" id="fafauser2" aria-hidden="true"></i> ${cusername}<i id="fafauserdot" class="fa fa-circle" aria-hidden="true"></i>
@@ -588,7 +725,7 @@ app.post("/create-account-data",(req,res)=>{
    }
 
    const newuser = { name:name,username:username, password: password };
-   const newloc = { username:username, latitude:0,longitude:0 };
+    const newloc = { username:username, latitude:0,longitude:0 };
    dc.push(newuser);
    loc.push(newloc);
 fs.writeFileSync(__dirname + "/user.json", JSON.stringify(dc, null, 2), "utf-8");
@@ -753,4 +890,3 @@ dc[0] = { ...dc[0], email2: "sarif@7" };
 
 fs.writeFileSync(__dirname + "/user.json", JSON.stringify(dc, null, 2), "utf-8");
 */
-

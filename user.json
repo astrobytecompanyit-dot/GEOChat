@@ -23,7 +23,10 @@
     "username": "Keras",
     "password": "456",
     "mert": [
-      "//user//:hi"
+      "//user//:hi",
+      "//user//:hmm",
+      "//user//:how are you",
+      "//me//:hmmm I am fine"
     ]
   },
   {
@@ -31,8 +34,7 @@
     "username": "mert",
     "password": "23",
     "Keras": [
-      "//me//:Start chatting!",
-      "//me//:hi"
+      "//me//:Start chatting!"
     ]
   }
 ]
