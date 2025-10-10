@@ -588,7 +588,7 @@ app.post("/create-account-data",(req,res)=>{
    }
 
    const newuser = { name:name,username:username, password: password };
-    const newloc = { username:username, latitude:null,longitude:null };
+   const newloc = { username:username, latitude:0,longitude:0 };
    dc.push(newuser);
    loc.push(newloc);
 fs.writeFileSync(__dirname + "/user.json", JSON.stringify(dc, null, 2), "utf-8");
@@ -753,3 +753,4 @@ dc[0] = { ...dc[0], email2: "sarif@7" };
 
 fs.writeFileSync(__dirname + "/user.json", JSON.stringify(dc, null, 2), "utf-8");
 */
+
