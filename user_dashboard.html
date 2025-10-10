@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>HeyChat</title>
+
+   
+</head>
+
+<body>
+    <div id="container_users">
+       <div id="Headline"><h2 id="hey">Hey </h2><h2 id="chat">Chat!🙋‍♂️</h2></div>
+       <div id="myprofile"><i class="fa fa-user" id="fafauserpro" aria-hidden="true"></i></div>
+    <div id="myprofilediv" style="display: none;">
+      <i class="fa fa-user" id="fafauserpro" aria-hidden="true"></i>
+      <p id="myprofilename"></p>
+      <p id="myprofileuser"></p>
+      <a href="/"><button id="logout">log out</button></a>
+    </div>
+      <div id="userenv">
+      
+       
+       
+      </div>
+
+      <a href="/connect-user"><div id="absolute"><i class="fa fa-plus" aria-hidden="true"></i></div></a>
+       </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded",()=>{
+
+        function userload(){
+          fetch("/user-profiles-dash")
+           
+          .then(response=>response.json())
+          
+          
+          .then(data=>{
+            
+            const myprofilename=document.getElementById("myprofilename");
+            const myprofileuser=document.getElementById("myprofileuser");
+            myprofilename.innerHTML="<strong>Name: </strong>"+data.name;
+            myprofileuser.innerHTML="<strong>Username: </strong>"+data.username;
+
+             let a=Object.keys(data);
+
+             if(a.length>=3){
+             
+              const chatenv=document.getElementById("userenv");
+              chatenv.innerHTML=``;
+
+              for(let i=3; i<a.length; i++){
+               
+                let usernames=Object.keys(data);
+               let usermsg=data[usernames[i]];
+               let msg=(usermsg.length)-1;
+               let latest=usermsg[msg];
+               console.log(latest);
+               let newmess='';
+               if (latest.includes("//user//:")){
+             newmess=latest.replace("//user//:"," ");
+            
+            
+           }
+           else{
+             newmess=latest.replace("//me//:"," ");
+           }
+            let latestmess=newmess.substring(0,10);
+            
+                chatenv.innerHTML+=`  <form method="post" action="enter-user-chat" id="userico">
+          <span id="userchat"><i class="fa fa-user" id="fafauser" aria-hidden="true"></i> <div id="chatcontent">
+            <button type="submit" id="userbtn"><strong>${usernames[i]}</strong><i id="fafauserdot" class="fa fa-circle" aria-hidden="true"></i></button>
+            <p id="chattexto">${latestmess}...</p>
+          </div></span>
+          <input type="text" name="cusername" hidden value="${usernames[i]}">
+        
+        </form>`;
+                
+
+              }
+
+
+             }
+
+             else{
+              const chatenv=document.getElementById("userenv");
+              chatenv.innerHTML=``;
+             }
+
+          })
+          
+          
+          .catch(error=>{
+            console.log("error fatching data!");
+          }
+          )
+        }
+          
+        setInterval(userload,1000);
+      })
+      document.getElementById("fafauserpro").addEventListener("click",()=>{
+              const mydiv=document.getElementById("myprofilediv");
+            if(mydiv.style.display=="none"){
+              mydiv.style.display="flex";
+            }
+            else{
+              mydiv.style.display="none";
+            }
+
+      })
+      
+
+
+
+      //Location code
+
+          if ("geolocation" in navigator) {
+      navigator.geolocation.watchPosition(
+        async (position) => {
+          const latitude = position.coords.latitude;
+          const longitude = position.coords.longitude;
+
+     
+
+          // Optional: send to server
+          try {
+            await fetch('/location', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ latitude, longitude })
+            });
+          } catch (err) {
+            console.error('Error sending location to server', err);
+          }
+        },
+        (error) => {
+          document.getElementById('location').innerText = `Error: ${error.message}`;
+        },
+        {
+          enableHighAccuracy: true,
+          maximumAge: 1000,
+          timeout: 5000
+        }
+      );
+    } else {
+      alert("GeoLocation Not supporting!");
+    }
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "GEOChat",
+  "version": "1.0.0",
+  "description": "Chat application with location tracking",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Sarif Mondal",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-session": "^1.17.3"
+  }
+}

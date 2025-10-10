@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>HeyChat</title>
+   
+</head>
+
+<body>
+    <div id="container3">
+       <div id="Headline"><h1 id="hey">Hey</h1><h1 id="chat">Chat!🙋‍♂️</h1></div>
+       <h2>Welcome to heychat!</h2>
+      <div id="chatenv2">
+        <input type="text" name="name" id="inputname2" placeholder="enter name" required>
+        <input type="text" name="username" id="inputusername2" placeholder="enter username" required>
+        <input type="password" name="password" id="inputpassword2" placeholder="password" required>
+        <p id="alertmess" style="display: none;">username already exists!</p>
+      <button id="btn3">create account</button>
+      
+      </div>
+       </div>
+
+    <script>
+       document.getElementById("btn3").addEventListener("click",()=>{
+
+const name=document.getElementById("inputname2").value;
+const username=document.getElementById("inputusername2").value;
+const password=document.getElementById("inputpassword2").value;
+
+if(name=="" || username=="" || password==""){
+    return alert("please enter a valid input!")
+}
+
+fetch("/create-account-data",{
+method:"POST",
+headers:{
+"Content-Type": "application/json" 
+},
+body:JSON.stringify({name,username,password})
+})
+.then(response=>response.json())
+.then(data=>{
+if(data.message=="yes"){
+const alert=document.getElementById("alertmess");
+alert.style.display="block";
+}
+
+else{
+window.location.href="/";
+}
+})
+.catch(error=>{
+
+console.log("error sending message!");
+})
+
+})
+    </script>
+</body>
+
+</html>

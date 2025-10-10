@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>HeyChat</title>
+   
+</head>
+
+<body>
+    <div id="container">
+      <div id="Headline"><h2 id="hey">Hey </h2><h2 id="chat">Chat!🙋‍♂️</h2></div>
+      <div  id="chatenv">
+        <h2>Connect user!</h2>
+        <input type="text" name="cusername" id="inputusername" placeholder="enter username" required>
+        <p id="alertmess" style="display: none;">user not found!</p>
+      <button id="btn">Connect</button>
+      
+      </div>
+       </div>
+
+    <script>
+      document.getElementById("btn").addEventListener("click",()=>{
+
+        const cusername=document.getElementById("inputusername").value;
+
+        fetch("/connect-user-data",{
+  method:"POST",
+  headers:{
+    "Content-Type": "application/json" 
+  },
+  body:JSON.stringify({cusername})
+ })
+ .then(response=>response.json())
+ .then(data=>{
+  if(data.message=="no"){
+    const alert=document.getElementById("alertmess");
+    alert.style.display="block";
+  }
+ 
+  else{
+    window.location.href="/dashboard";
+  }
+ })
+ .catch(error=>{
+
+  console.log("error sending message!");
+ })
+
+      })
+    </script>
+</body>
+
+</html>

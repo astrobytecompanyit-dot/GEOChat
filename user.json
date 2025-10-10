@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Jeams ladin",
+    "username": "jeams",
+    "password": "3149",
+    "sarif": [
+      "//user//:hi",
+      "//me//:hmm"
+    ]
+  },
+  {
+    "name": "Sarif mondal",
+    "username": "sarif",
+    "password": "7076",
+    "jeams": [
+      "//me//:Start chatting!",
+      "//me//:hi",
+      "//user//:hmm"
+    ]
+  },
+  {
+    "name": "Keras Jeam",
+    "username": "Keras",
+    "password": "456",
+    "mert": [
+      "//user//:hi"
+    ]
+  },
+  {
+    "name": "Jeams mert",
+    "username": "mert",
+    "password": "23",
+    "Keras": [
+      "//me//:Start chatting!",
+      "//me//:hi"
+    ]
+  }
+]

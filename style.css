@@ -1,0 +1,599 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(174 206 255);
+    font-family: "Roboto", serif;
+    height: 100vh;
+    margin: 0px;
+}
+
+#container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: 2px solid rgba(59, 59, 59, 0);
+    border-radius: 14px;
+    width: 500px;
+    height: 600px;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.475);
+    margin: 8px 0px 8px 0px;
+}
+
+#Headline {
+    display: flex;
+}
+
+#myprofile {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 22px;
+    margin-bottom: 7px;
+    width: 100%;
+}
+
+#fafaLocation{
+    margin-left: 8px;
+    color: red;
+}
+
+#myprofilediv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    border: 1px solid rgba(64, 64, 64, 0.477);
+    border-radius: 16px;
+    top: 100px;
+    right: 64px;
+    background-color: white;
+    padding: 22px;
+    font-size: 15px;
+}
+
+#myprofilename {
+    margin: 6px;
+    color: rgb(68, 68, 68);
+}
+
+#myprofileuser {
+    margin: 10px;
+    color: rgb(68, 68, 68);
+}
+
+#logout {
+    padding: 8px 18px 8px 18px;
+    border-radius: 16px;
+    color: black;
+    border: none;
+}
+#logout:hover {
+    background-color: rgb(172, 172, 172);
+    
+}
+
+#hey {
+    color: rgb(0, 0, 234);
+}
+
+#chatenv {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-top: 2px solid rgba(107, 107, 107, 0.584);
+
+}
+
+#chatenv h2 {
+    color: rgb(60, 60, 60);
+    font-weight: 500;
+}
+
+#inputusername {
+    width: 300px;
+    padding: 8px;
+    border: 1px solid rgba(74, 74, 74, 0.525);
+    border-radius: 12px;
+}
+
+#inputusername:focus {
+    outline: rgb(70, 70, 70);
+}
+
+#btn {
+    margin: 12px;
+    border: 1px solid rgb(28, 47, 255);
+    background-color: rgb(28, 47, 255);
+    color: white;
+    border-radius: 12px;
+    width: 80px;
+    padding: 8px;
+}
+
+#userenv {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-top: 2px solid rgba(107, 107, 107, 0.584);
+    overflow-y: auto;
+    /* Only vertical scrolling */
+    overflow-x: hidden;
+    /* Hide horizontal scrollbar */
+}
+
+/* Custom scrollbar for WebKit browsers (Chrome, Edge, Safari) */
+#userenv::-webkit-scrollbar {
+    width: 8px;
+    /* Set width of scrollbar */
+}
+
+#userenv::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    /* Background color of scrollbar track */
+    border-radius: 10px;
+}
+
+#userenv::-webkit-scrollbar-thumb {
+    background: rgb(0, 76, 255);
+    /* Scrollbar thumb color */
+    border-radius: 10px;
+}
+
+#userenv::-webkit-scrollbar-thumb:hover {
+    background: rgb(0, 50, 200);
+    /* Darker color on hover */
+}
+
+
+#userico {
+    border: 1px solid rgba(149, 149, 149, 0.408);
+    padding: 20px;
+    display: flex;
+}
+#userchat {
+    display: flex;
+    
+}
+#chatcontent{
+    max-width: 100%;
+}
+
+#chattexto{
+    max-width: 100%;
+    white-space: nowrap; 
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+#fafauser {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgba(108, 108, 108, 0.249);
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    color: rgb(255, 255, 255);
+    background-color: rgb(41, 50, 115);
+    margin-right: 6px;
+}
+#fafauserdot{
+    margin-left: 8px;
+    color: rgb(0, 220, 0);
+    font-size: 11px;
+}
+
+#userbtn {
+    font-size: 17px;
+    font-weight: 500;
+    border: none;
+    background-color: white;
+}
+
+#container_users {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    border: 0px solid rgba(59, 59, 59, 0);
+    border-radius: 14px;
+    width: 600px;
+    height: 600px;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.421);
+    margin: 8px 0px 8px 0px;
+
+
+}
+
+#container_Chatting {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    border: 2px solid rgba(59, 59, 59, 0);
+    border-radius: 14px;
+    width: 600px;
+    height: 600px;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.421);
+    margin: 8px 0px 8px 0px;
+
+
+}
+
+#userchatdiv {
+    padding: 25px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+#userchattext {
+    padding: 8px 14px 8px 14px;
+    border: 1px solid rgb(197, 197, 197);
+    border-radius: 50px;
+    background-color: rgb(197, 197, 197);
+    color: rgb(17, 17, 17);
+}
+
+#mychatdiv {
+    padding: 25px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#mychattext {
+    padding: 8px 14px 8px 14px;
+    border: 1px solid #000080;
+    border-radius: 50px;
+    background-color: #000080;
+    color: white;
+}
+
+#userico2 {
+    border: 1px solid #000080;
+    padding: 15px;
+    width: 110%;
+    box-sizing: border-box;
+    background-color: #000080;
+    color: white;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+
+
+}
+
+#uc1 {
+    width: 60%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+#uc2 {
+    width: 60%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+#uc3 {
+    width: 20%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#myprofilediv2 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    position: absolute;
+    height: 150px;
+    width: 150px;
+    border: 1px solid rgba(64, 64, 64, 0.477);
+    border-radius: 16px;
+    top: 100px;
+    right: 50px;
+    background-color: white;
+    padding: 22px;
+    font-size: 15px;
+    color: black;
+}
+
+#back {
+    margin: 6px;
+    padding: 8px 15px 8px 15px;
+    background-color: rgba(255, 255, 255, 0);
+    border: 1px solid rgba(255, 0, 0, 0);
+    border-radius: 16px;
+    
+}
+
+#dchat {
+    margin: 6px;
+    padding: 8px 15px 8px 15px;
+    background-color: rgba(0, 51, 255, 0);
+    border: 1px solid rgba(255, 0, 0, 0);
+    border-radius: 16px;
+}
+
+#duser {
+    margin: 6px;
+    padding: 8px 15px 8px 15px;
+    background-color: rgba(255, 0, 0, 0);
+    border: 1px solid rgba(255, 0, 0, 0);
+    border-radius: 16px;
+  
+}
+
+#back:hover {
+    background-color: rgb(172, 172, 172);
+    
+}
+
+#dchat:hover {
+    background-color: rgb(172, 172, 172);
+}
+
+#duser:hover {
+    background-color: rgb(172, 172, 172);
+  
+}
+
+#fafauser2 {
+    border: 2px solid rgba(243, 243, 243, 0.249);
+    padding: 14px;
+    border-radius: 100px;
+    color: rgba(255, 255, 255, 0.974);
+}
+
+#fafauserpro {
+    border: 2px solid #000080;
+    padding: 14px;
+    border-radius: 100px;
+    color: rgba(255, 255, 255, 0.974);
+    background-color: #000080;
+
+}
+
+#inputmess {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+
+}
+
+#inputmess input {
+    width: 80%;
+    margin: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.532);
+    border-radius: 14px;
+    padding: 8px;
+}
+
+#sendbtn {
+    border: none;
+    background-color: rgba(249, 249, 249, 0);
+    color: rgb(0, 102, 255);
+}
+#sendbtn:hover{
+    color: rgb(0, 64, 161);
+}
+
+#absolute {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    right: 30px;
+    bottom: 80px;
+    width: 50px;
+    border: 2px solid #000080;
+    background-color: #000080;
+    color: white;
+    box-sizing: border-box;
+    border-radius: 100px;
+}
+
+#container2 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: 2px solid rgba(59, 59, 59, 0);
+    border-radius: 14px;
+    width: 400px;
+    height: 380px;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.421);
+    margin: 8px 0px 8px 0px;
+    box-sizing: border-box;
+}
+
+
+#chatenv2 {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    border-top: 2px solid rgba(107, 107, 107, 0);
+
+}
+
+#container2 h2 {
+    color: rgb(60, 60, 60);
+    font-weight: 500;
+}
+
+#inputusername2 {
+    margin: 8px;
+    width: 80%;
+    padding: 8px;
+    border: 1px solid rgba(74, 74, 74, 0.525);
+    border-radius: 12px;
+}
+
+#inputusername2:focus {
+    outline: rgb(70, 70, 70);
+}
+
+#inputname2 {
+    margin: 8px;
+    width: 80%;
+    padding: 8px;
+    border: 1px solid rgba(74, 74, 74, 0.525);
+    border-radius: 12px;
+}
+
+#inputname2:focus {
+    outline: rgb(70, 70, 70);
+}
+
+#inputpassword2 {
+    margin: 8px;
+    width: 80%;
+    padding: 8px;
+    border: 1px solid rgba(74, 74, 74, 0.525);
+    border-radius: 12px;
+}
+
+#inputpassword2:focus {
+    outline: rgb(70, 70, 70);
+}
+#inputusername4 {
+    margin: 8px;
+    width: 80%;
+    padding: 8px;
+    border: 1px solid rgba(74, 74, 74, 0.525);
+    border-radius: 12px;
+}
+
+#inputusername4:focus {
+    outline: rgb(70, 70, 70);
+}
+
+#btn2 {
+    margin: 12px;
+    border: 1px solid rgb(28, 47, 255);
+    background-color: rgb(28, 47, 255);
+    color: white;
+    border-radius: 12px;
+    width: 80%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+#container3 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: 2px solid rgba(59, 59, 59, 0);
+    border-radius: 14px;
+    width: 400px;
+    height: 450px;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.421);
+    margin: 8px 0px 8px 0px;
+    box-sizing: border-box;
+}
+
+#btn3 {
+    margin: 12px;
+    border: 1px solid rgb(255, 66, 28);
+    background-color: rgb(255, 66, 28);
+    color: white;
+    border-radius: 12px;
+    width: 80%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width:700px) {
+    body{
+        font-size: 11px;
+    }
+    #inputusername {
+        width: 200px;
+
+    }
+    #userbtn strong{
+        font-size: 13px;
+    }
+   #container_users{
+    font-size: 11px;
+   }
+
+    #hey {
+        font-size: 20px;
+    }
+
+    #chat {
+        font-size: 20px;
+    }
+
+    #chatenv h2 {
+        font-size: 18px;
+    }
+
+    #container {
+        width: 300px;
+        height: 400px;
+    }
+
+    #container_users {
+        width: 500px;
+        height: 500px;
+    }
+
+    #container2 {
+        width: 300px;
+        height: 350px;
+    }
+
+    #container3 {
+        width: 300px;
+        height: 400px;
+    }
+
+    #container2 h2 {
+        font-size: 15px;
+    }
+
+    #container3 h2 {
+        font-size: 15px;
+    }
+
+    #myprofilediv {
+
+        height: 150px;
+        width: 150px;
+        font-size: 13px;
+
+    }
+
+    #userico2 {
+
+        width: 100%;
+
+
+
+    }
+   
+}
+
+#alertmess {
+    font-size: 15px;
+    color: red;
+}
