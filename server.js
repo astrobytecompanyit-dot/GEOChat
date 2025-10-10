@@ -47,7 +47,7 @@ app.post("/login-data",(req,res)=>{
       res.redirect("/dashboard");
     }
     else{
-      res.status(200).send("user not found");
+     res.redirect("/");
     }
 
 })
@@ -890,3 +890,4 @@ dc[0] = { ...dc[0], email2: "sarif@7" };
 
 fs.writeFileSync(__dirname + "/user.json", JSON.stringify(dc, null, 2), "utf-8");
 */
+
