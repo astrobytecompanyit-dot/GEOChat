@@ -2,7 +2,7 @@ const express = require("express");
 const fs = require("fs");
 const app = express();
 const session=require("express-session");
-
+const translatte = require('translatte');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -47,7 +47,7 @@ app.post("/login-data",(req,res)=>{
       res.redirect("/dashboard");
     }
     else{
-     res.redirect("/");
+        res.redirect("/");
     }
 
 })
@@ -215,16 +215,25 @@ app.post("/enter-user-chat",(req,res)=>{
  background-color: #284364ff;
  color:white;
  border-radius: 20px;
+ border: 2px solid rgba(0, 0, 255, 0);
 }
  #back{
  background-color: #284364ff;
  color:white;
  border-radius: 20px;
+ border: 2px solid rgba(0, 0, 255, 0);
 }
  #duser{
  background-color: #284364ff;
  color:white;
  border-radius: 20px;
+ border: 2px solid rgba(0, 0, 255, 0);
+}
+ #translate{
+ background-color: #284364ff;
+ color:white;
+ border-radius: 20px;
+ border: 2px solid rgba(0, 0, 255, 0);
 }
   #inputmess input:focus {
     outline: none;
@@ -257,6 +266,249 @@ app.post("/enter-user-chat",(req,res)=>{
       font-size: 0.95rem;
     }
   }
+.language-selector {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    background: rgba(0, 20, 40, 0.6); /* Transparent black-blue */
+    padding: 15px 25px;
+    border-radius: 12px;
+    backdrop-filter: blur(5px);
+
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+
+    z-index: 9999; /* Above all elements */
+}
+
+.language-selector button {
+    background: rgba(0, 110, 255, 0.7);
+    border: none;
+    padding: 10px 18px;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.language-selector button:hover {
+    background: rgba(0, 150, 255, 0.9);
+    transform: translateY(-2px);
+}
+
+.lang-title {
+    margin: 0;
+    margin-bottom: 12px;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    color: #aee6ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    text-shadow: 0 0 8px rgba(0, 180, 255, 0.7);
+}
+
+.lang-title i {
+    font-size: 24px;
+    color: #44caff;
+}
+/* ============================
+   RESPONSIVE LANGUAGE SELECTOR
+   ============================ */
+
+/* Mobile Devices (Small Phones) */
+@media (max-width: 480px) {
+    .language-selector {
+        width: 85%;
+        padding: 12px 18px;
+    }
+
+    .lang-title {
+        font-size: 18px;
+    }
+
+    .lang-title i {
+        font-size: 22px;
+    }
+
+    .language-selector button {
+        font-size: 14px;
+        padding: 8px 14px;
+    }
+}
+
+/* Medium Phones & Small Tablets */
+@media (max-width: 768px) {
+    .language-selector {
+        width: 70%;
+        padding: 14px 20px;
+    }
+
+    .lang-title {
+        font-size: 19px;
+    }
+
+    .language-selector button {
+        font-size: 15px;
+    }
+}
+
+/* Tablets & Small Laptops */
+@media (max-width: 1024px) {
+    .language-selector {
+        width: 60%;
+    }
+}
+
+/* Large Screens (Big Monitors) */
+@media (min-width: 1400px) {
+    .language-selector {
+        width: 30%;
+        padding: 20px 30px;
+    }
+
+    .lang-title {
+        font-size: 22px;
+    }
+
+    .lang-title i {
+        font-size: 26px;
+    }
+
+    .language-selector button {
+        font-size: 16px;
+        padding: 12px 20px;
+    }
+}
+
+
+
+
+
+
+
+
+
+/* ===============================
+   PROFILE MENU (myprofilediv2)
+   =============================== */
+
+/* ===============================
+   PROFILE CENTER POPUP
+   =============================== */
+
+#myprofilediv2 {
+    position: fixed;                    /* stays above everything */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);   /* center perfectly */
+
+    background: rgba(0, 20, 40, 0.8);
+    backdrop-filter: blur(6px);
+
+    padding: 20px;
+    border-radius: 15px;
+
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+
+    width: 280px;
+    z-index: 99999;
+
+    box-shadow: 0 0 25px rgba(0, 150, 255, 0.4);
+    border: 1px solid rgba(0, 150, 255, 0.3);
+    animation: popupFade 0.3s ease;
+}
+
+/* Popup buttons & icons */
+#myprofilediv2 a {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 12px;
+    text-decoration: none;
+}
+
+#myprofilediv2 i {
+    color: #61dafb;
+    font-size: 20px;
+}
+
+#myprofilediv2 button {
+    flex: 1;
+    background: rgba(0, 110, 255, 0.7);
+    color: #fff;
+    border: none;
+    padding: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#myprofilediv2 button:hover {
+    background: rgba(0, 150, 255, 1);
+    transform: scale(1.05);
+}
+
+/* Smooth fade animation */
+@keyframes popupFade {
+    from { opacity: 0; transform: translate(-50%, -45%); }
+    to { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+
+/* Small Phones */
+@media (max-width: 480px) {
+    #myprofilediv2 {
+        width: 85%;
+        padding: 15px;
+    }
+
+    #myprofilediv2 button {
+        font-size: 14px;
+    }
+
+    #myprofilediv2 i {
+        font-size: 18px;
+    }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+    #myprofilediv2 {
+        width: 70%;
+    }
+}
+
+/* Large Screens */
+@media (min-width: 1400px) {
+    #myprofilediv2 {
+        width: 350px;
+        padding: 25px;
+    }
+
+    #myprofilediv2 button {
+        font-size: 16px;
+    }
+
+    #myprofilediv2 i {
+        font-size: 22px;
+    }
+}
+
+
 </style>
 
    
@@ -279,7 +531,20 @@ app.post("/enter-user-chat",(req,res)=>{
         <a href="/dashboard"><i class="fa fa-angle-right"></i><button id="back">back</button></a>
         <a ><i class='fas fa-comment-slash'></i><button id="dchat">delete chat</button></a>
         <a ><i class="fa fa-trash" aria-hidden="true"></i></i><button id="duser">delete user</button></a>
+        <a ><i class="fa fa-brain" aria-hidden="true"></i></i><button id="translate">Translate</button></a>
       </div>
+<div class="language-selector" id="lang">
+    
+    <h1 class="lang-title">
+        <i class="fa-solid fa-robot"></i>
+        Choose Language
+    </h1>
+<button onclick="ChooseLanguage('default')">Default</button>
+    <button onclick="ChooseLanguage('eng')">English</button>
+    <button onclick="ChooseLanguage('hin')">Hindi</button>
+    <button onclick="ChooseLanguage('ben')">Bengali</button>
+
+</div>
 
       <div id="userenv">
         
@@ -299,6 +564,8 @@ app.post("/enter-user-chat",(req,res)=>{
 
     <script>
 document.addEventListener("DOMContentLoaded",()=>{
+
+
 
 
   function chatload() {
@@ -379,6 +646,8 @@ document.getElementById("fafamenubar").addEventListener("click",()=>{
               mydiv.style.display="flex";
               icon.classList.remove("fa-bars");
               icon.classList.add("fa-x");
+              const languages = document.getElementById("lang")
+ languages.style.display = "none";
             }
             else{
               mydiv.style.display="none";
@@ -542,6 +811,47 @@ async function showLocation() {
 
 
 
+
+
+
+
+
+
+
+
+      document.getElementById("translate").addEventListener("click",()=>{
+const languages = document.getElementById("lang")
+ languages.style.display = "flex";
+ const mydiv=document.getElementById("myprofilediv2"); 
+ mydiv.style.display="none"
+
+})
+
+function ChooseLanguage(lan){
+
+ fetch("/change_lan",{
+  method:"POST",
+  headers:{
+    "Content-Type": "application/json" 
+  },
+  body:JSON.stringify({lan})
+ }).then(response=>response.json())
+.then(data=>{
+   if(data.message=="ok"){
+   alert("Language Translattor mode on!")
+      const languages = document.getElementById("lang")
+ languages.style.display = "none";
+   }
+})
+ .catch(error=>{
+
+      const languages = document.getElementById("lang")
+ languages.style.display = "none";
+  alert("error changing language!");
+ })
+
+}
+
    
     </script>
 </body>
@@ -597,7 +907,7 @@ app.post("/chat-load",(req,res)=>{
 
 
 
-app.post("/chat-sending", (req, res) => {
+app.post("/chat-sending",async (req, res) => {
    if (!req.session.user) {
      return res.redirect("/");
    }
@@ -606,8 +916,25 @@ app.post("/chat-sending", (req, res) => {
    let dc = JSON.parse(data);
    const username = req.session.user; 
    const cusername = req.body.cusername; 
-   const usermessage = req.body.usermessage;
- 
+   const Lan=req.session.lan;
+   const Umessage = req.body.usermessage;
+   let usermessage="";
+
+   if(Lan=="eng"){
+    usermessage=await translatte(Umessage, { to: 'en' });
+    usermessage=usermessage.text
+   }
+   else if(Lan=="ben"){
+    usermessage=await translatte(Umessage, { to: 'bn' });
+    usermessage=usermessage.text
+   }
+     else if(Lan=="hin"){
+    usermessage=await translatte(Umessage, { to: 'hi' });
+    usermessage=usermessage.text
+   }
+ else{
+  usermessage=Umessage;
+ }
    let senderUpdated = false;
    let receiverUpdated = false;
  
@@ -873,6 +1200,23 @@ app.post("/get-location",(req,res)=>{
 
 
 
+
+
+
+app.post("/change_lan",(req,res)=>{
+   if(req.session.user){
+   
+   req.session.lan=req.body.lan
+      res.json({message:"ok"})
+     }
+     else{
+      res.redirect("/");
+   }
+     
+})
+
+
+
 app.listen(3000, () => {
    console.log("Server is running on https://localhost/3000");
 })
@@ -890,4 +1234,3 @@ dc[0] = { ...dc[0], email2: "sarif@7" };
 
 fs.writeFileSync(__dirname + "/user.json", JSON.stringify(dc, null, 2), "utf-8");
 */
-
